@@ -2,7 +2,7 @@
 
 ## Overview
 
-**Optibuddy** is an AI-powered solution designed to optimize industrial performance through real-time data analysis and recommendations. Leveraging a fine-tuned language model (LLM) and IoT data, Optibuddy helps industries reduce resource waste, improve energy efficiency, and make informed decisions to boost sustainability.
+**Optibuddy** is an AI-powered solution designed to optimize industrial performance through real-time data analysis and recommendations. Leveraging the state-of-the-art LLaMA 3.2 model from Meta and IoT data, Optibuddy helps industries reduce resource waste, improve energy efficiency, and make informed decisions to boost sustainability.
 
 ---
 
@@ -63,7 +63,7 @@ The project is divided into three main components:
 
 ## **LLM Setup**
 
-We use a **pretrained language model** fine-tuned on datasets related to industrial processes and sustainability. The LLM generates insights and optimizes industrial performance.
+We use the **state-of-the-art LLaMA 3.2 model** from Meta, fine-tuned on datasets related to industrial processes and sustainability. The LLM generates insights and optimizes industrial performance.
 
 ### **Testing the LLM**
 
@@ -94,8 +94,6 @@ We use a **pretrained language model** fine-tuned on datasets related to industr
     - Ensure smooth data flow between the frontend, backend, and LLM for real-time recommendations.
 
 ---
-
-
 
 ## **How to Contribute**
 
