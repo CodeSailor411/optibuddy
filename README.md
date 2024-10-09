@@ -95,49 +95,7 @@ We use a **pretrained language model** fine-tuned on datasets related to industr
 
 ---
 
-## **Branching Strategy**
 
-- Use separate branches for frontend, backend, and LLM development.
-- Example branch names:
-    - `frontend-login-page`
-    - `backend-api-setup`
-    - `llm-finetune`
-
-1. **Create a New Branch**:
-    ```bash
-    git checkout -b your-feature-branch
-    ```
-
-2. **Commit Changes**:
-    ```bash
-    git commit -m "Added feature X"
-    ```
-
-3. **Push to Remote**:
-    ```bash
-    git push origin your-feature-branch
-    ```
-
-4. **Pull Requests**:
-    - Once your feature is complete, open a pull request for review and approval before merging into the main branch.
-
----
-
-## **Testing**
-
-### **Frontend Testing**:
-- Ensure all user interactions and inputs are correctly handled.
-- Test with real and mock data to confirm the frontend's smooth operation.
-
-### **Backend Testing**:
-- Verify API endpoints work as expected and handle the requests/responses from the LLM.
-- Ensure proper communication between frontend, backend, and LLM.
-
-### **LLM Testing**:
-- Input various queries to test the quality of recommendations and suggestions provided by the LLM.
-- Ensure the outputs align with the project's goals of optimizing industrial performance and sustainability.
-
----
 
 ## **How to Contribute**
 
