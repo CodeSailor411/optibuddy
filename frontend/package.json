@@ -1,30 +1,14 @@
 {
-<<<<<<< HEAD
-  "name": "1aeuromzung",
-=======
   "name": "frontend",
->>>>>>> efd46aac25670389929c6dafc3516a3eaffbbe00
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-<<<<<<< HEAD
-    "aos": "^2.3.4",
-    "axios": "^1.6.7",
-    "notiflix": "^3.2.7",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router": "^6.21.3",
-    "react-router-dom": "^6.21.3",
-    "react-router-hash-link": "^2.4.3",
-    "react-scripts": "^5.0.1",
-=======
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
->>>>>>> efd46aac25670389929c6dafc3516a3eaffbbe00
     "web-vitals": "^2.1.4"
   },
   "scripts": {
