@@ -5,7 +5,7 @@ from transformers import AutoTokenizer, pipeline
 from huggingface_hub import login
 
 # Replace 'your_hugging_face_token' with your actual token
-login(token='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')
+login(token='access_token')
 
 # Load the model and tokenizer
 model_id = "meta-llama/Llama-3.2-1B-Instruct"
