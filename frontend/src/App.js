@@ -7,14 +7,15 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
+
 // All pages
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 import DemoProduct from './pages/DemoProduct';
 
 // Authentication components
-
-import SignUp from './components/Navbar/SignUp';
+import SignUp from './pages/SignUp';
+import SignIn from './pages/SignIn'; // Import the SignIn component
 
 // Custom hooks and components
 import { useDocTitle } from './components/CustomHook';
@@ -49,8 +50,8 @@ const App = () => {
           <Route path="/get-demo" element={<DemoProduct />} /> 
 
           {/* Authentication Routes */}
-         
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/signin" element={<SignIn />} /> {/* Add SignIn route */}
         </Routes>
       </ScrollToTop>
     </Router>
