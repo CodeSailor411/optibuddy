@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import Hero from '../components/Hero';
 import Intro from '../components/Intro';
 import Services from '../components/Services';
-
+import SubscriptionPlans from '../components/SubscriptionPlans'; // Import the new component
 
 const Home = () => {
     return (
@@ -13,13 +13,12 @@ const Home = () => {
             <Hero />
             <Intro />
             <Services />
+            <SubscriptionPlans /> {/* Add the SubscriptionPlans component here */}
             <Clients />
-            <Cta/>
+            <Cta />
             <Footer />
         </>
-
-    )
+    );
 }
 
 export default Home;
-
