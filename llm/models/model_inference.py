@@ -1,8 +1,8 @@
-from langchain_huggingface import ChatHuggingFace, HuggingFacePipeline
-from transformers import AutoTokenizer, pipeline
+from langchain_huggingface import ChatHuggingFace, HuggingFacePipeline # type: ignore
+from transformers import AutoTokenizer # type: ignore
 
 # Authenticate with Hugging Face token
-from huggingface_hub import login
+from huggingface_hub import login # type: ignore
 
 # Replace 'your_hugging_face_token' with your actual token
 login(token='access_token')
