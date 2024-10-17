@@ -52,22 +52,14 @@ The project is composed of three core components:
     pip install -r requirements.txt
     ```
 
-3. **Configure Environment Variables**:
-    Create a `.env` file in the backend directory and add your Azure OpenAI credentials:
-    ```bash
-    ENDPOINT_URL=https://optibuddy.openai.azure.com/
-    DEPLOYMENT_NAME=optibuddy
-    AZURE_OPENAI_SUBSCRIPTION_KEY=your_subscription_key
-    ```
-
-4. **Start the Backend Server**:
+3. **Start the Backend Server**:
     ```bash
     flask run
     ```
 
     The backend will be running at `http://localhost:5000`.
 
-5. **Testing API Endpoints**:
+4. **Testing API Endpoints**:
     Use Postman, curl, or any HTTP client to test the endpoints, ensuring proper communication with the LLM and data flow. Example:
     ```bash
     curl -X POST http://localhost:5000/chat -d '{"message": "How can we improve our company sustainability to fit the latest trends in terms of reducing greenhouse gases?"}'
