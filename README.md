@@ -2,17 +2,19 @@
 
 ## Overview
 
-**Optibuddy** is an AI-powered solution designed to optimize industrial performance through real-time data analysis and recommendations. Leveraging the state-of-the-art LLaMA 3.2 model from Meta and IoT data, Optibuddy helps industries reduce resource waste, improve energy efficiency, and make informed decisions to boost sustainability.
+**OptiBuddy** is an AI-powered solution designed to optimize industrial performance through real-time IoT data analysis and AI-driven recommendations. By leveraging the advanced **LLaMA 3.2 model** from Meta and Microsoft Azure for **cloud computing**, fine-tuned for industrial processes and sustainability, OptiBuddy helps industries enhance operational efficiency, reduce energy consumption, and minimize resource waste, driving sustainable business practices.
+
+The solution integrates seamlessly with IoT sensors and business systems to deliver insights, offering real-time decision support for maximizing industrial output while adhering to environmental sustainability goals.
 
 ---
 
 ## **Project Structure**
 
-The project is divided into three main components:
+The project is composed of three core components:
 
-1. **Frontend**: Developed using ReactJS to provide a user-friendly interface.
-2. **Backend**: A server that handles API requests and communicates with the LLM.
-3. **LLM**: A fine-tuned language model that processes data inputs and generates optimization suggestions.
+1. **Frontend**: A ReactJS-based web interface offering a user-friendly dashboard for interacting with OptiBuddy.
+2. **Backend**: A Flask-based server that handles API requests, manages data processing, and interacts with the AI model.
+3. **LLM**: A fine-tuned large language model (LLaMA 3.2) providing intelligent responses and optimization recommendations by analyzing IoT data.
 
 ---
 
@@ -33,11 +35,11 @@ The project is divided into three main components:
     npm start
     ```
 
-    The application will be accessible at `http://localhost:3000`.
+    The frontend application will be accessible at `http://localhost:3000`.
 
 ---
 
-## **Backend Setup**
+## **Backend Setup (Flask)**
 
 1. **Navigate to the Backend Directory**:
     ```bash
@@ -45,65 +47,132 @@ The project is divided into three main components:
     ```
 
 2. **Install Dependencies**:
+    Ensure you have Python and pip installed, then run:
     ```bash
-    npm install
+    pip install -r requirements.txt
     ```
 
-3. **Start the Backend Server**:
+3. **Configure Environment Variables**:
+    Create a `.env` file in the backend directory and add your Azure OpenAI credentials:
     ```bash
-    npm start
+    ENDPOINT_URL=https://optibuddy.openai.azure.com/
+    DEPLOYMENT_NAME=optibuddy
+    AZURE_OPENAI_SUBSCRIPTION_KEY=your_subscription_key
     ```
 
-    The backend will run at `http://localhost:5000`.
+4. **Start the Backend Server**:
+    ```bash
+    flask run
+    ```
 
-4. **Testing API Endpoints**:
-    Use Postman or curl to ensure API endpoints for the LLM are correctly set up.
+    The backend will be running at `http://localhost:5000`.
+
+5. **Testing API Endpoints**:
+    Use Postman, curl, or any HTTP client to test the endpoints, ensuring proper communication with the LLM and data flow. Example:
+    ```bash
+    curl -X POST http://localhost:5000/chat -d '{"message": "How can we improve our company sustainability to fit the latest trends in terms of reducing greenhouse gases?"}'
+    ```
 
 ---
 
 ## **LLM Setup**
 
-We use the **state-of-the-art LLaMA 3.2 model** from Meta, fine-tuned on datasets related to industrial processes and sustainability. The LLM generates insights and optimizes industrial performance.
+### **Model Details**:
+OptiBuddy uses the **LLaMA 3.2** language model, fine-tuned on industrial and sustainability datasets to provide actionable insights based on the latest company and industry data. The model is deployed on **Azure OpenAI** infrastructure for scalability and reliability in cloud environments.
 
-### **Testing the LLM**
+### **Steps to Set Up the LLM**:
 
 1. **Navigate to the LLM Directory**:
     ```bash
     cd llm
     ```
 
-2. **Install Dependencies**:
+2. **Install LLM Dependencies**:
     ```bash
     pip install -r requirements.txt
     ```
 
 3. **Fine-Tune the Model**:
-    - Fine-tune the model on your dataset using Hugging Face or other frameworks.
-    - Save the model in a designated directory.
+    - Use your industrial dataset for fine-tuning the model. Fine-tuning can be done using frameworks like Hugging Face Transformers or directly on Azure ML.
+    - Example of fine-tuning via Hugging Face:
+    ```python
+    from transformers import LlamaForCausalLM, Trainer, TrainingArguments
+
+    model = LlamaForCausalLM.from_pretrained('meta/llama-3.2')
+    training_args = TrainingArguments(
+        output_dir='./results',
+        per_device_train_batch_size=8,
+        num_train_epochs=3,
+        logging_dir='./logs',
+    )
+    trainer = Trainer(
+        model=model,
+        args=training_args,
+        train_dataset=your_dataset,
+    )
+    trainer.train()
+    ```
 
 4. **Run Inference**:
-    - Load the fine-tuned model and provide test inputs (e.g., industrial queries).
-    - Example Input: 
+    Once fine-tuning is complete, load the model to perform inference on test queries:
+    ```bash
+    python run_inference.py
+    ```
+
+    - **Example Input**:
         ```bash
-        "How can we improve energy efficiency in our factory?"
+        "How can we reduce energy consumption in our manufacturing process?"
         ```
-    - The LLM will generate recommendations based on the input.
+
+    - The model will generate optimization recommendations based on real-time IoT data and fine-tuned insights.
 
 5. **Integrating with Backend**:
-    - The backend communicates with the LLM through API endpoints.
-    - Ensure smooth data flow between the frontend, backend, and LLM for real-time recommendations.
+    - The backend communicates with the LLM via Azure OpenAI's cloud API.
+    - Ensure the LLM is accessible through the backend API endpoints for real-time interaction.
+
+---
+
+## **Azure Deployment**
+
+OptiBuddy’s LLM is fine-tuned and hosted on **Azure OpenAI** for cloud-based access. Azure allows for scalability and ensures the model remains up-to-date with the latest industry and company-specific data.
+
+### Key Azure Components:
+
+- **Azure OpenAI Service**: Hosts the LLaMA model for scalable and reliable API access.
+- **Azure IoT Hub**: Integrates with IoT devices to continuously feed real-time data for analysis by OptiBuddy.
+- **Azure Machine Learning**: Used for fine-tuning and model training processes, allowing seamless integration of industry-specific data.
+
+Ensure that your Azure OpenAI subscription and deployments are correctly set up by configuring the necessary API keys and environment variables in the `.env` file as shown in the backend setup section.
 
 ---
 
 ## **How to Contribute**
 
-1. Fork the repository and clone your local copy.
-2. Work on your assigned branch.
-3. Commit and push your changes.
-4. Open a pull request for review.
+We welcome contributions to improve OptiBuddy. To get started:
+
+1. **Fork the Repository**: Clone the repository to your local machine.
+    ```bash
+    git clone https://github.com/your-username/optibuddy.git
+    ```
+
+2. **Create a New Branch**: Work on a new branch for your changes.
+    ```bash
+    git checkout -b feature-branch
+    ```
+
+3. **Make Your Changes**: Implement your changes or improvements.
+
+4. **Commit and Push**: Commit your changes to the branch and push them to GitHub.
+    ```bash
+    git add .
+    git commit -m "Description of changes"
+    git push origin feature-branch
+    ```
+
+5. **Open a Pull Request**: Submit your pull request for review by the team.
 
 ---
 
 ## **License**
 
-This project is licensed under the MIT License.
+OptiBuddy is licensed under the **MIT License**. It is free for open-source use and development, with cloud deployment provided by Azure to facilitate seamless integration and scaling in industrial applications.
