@@ -2,7 +2,7 @@
 
 ## Overview
 
-**OptiBuddy** is an AI-powered solution designed to optimize industrial performance through real-time IoT data analysis and AI-driven recommendations. By leveraging the advanced **LLaMA 3.2 model** from Meta, fine-tuned for industrial processes and sustainability, OptiBuddy helps industries enhance operational efficiency, reduce energy consumption, and minimize resource waste, driving sustainable business practices.
+**OptiBuddy** is an AI-powered solution designed to optimize industrial performance through real-time IoT data analysis and AI-driven recommendations. By leveraging the advanced **LLaMA 3.2 model** from Meta and Microsoft Azure for **cloud computing**, fine-tuned for industrial processes and sustainability, OptiBuddy helps industries enhance operational efficiency, reduce energy consumption, and minimize resource waste, driving sustainable business practices.
 
 The solution integrates seamlessly with IoT sensors and business systems to deliver insights, offering real-time decision support for maximizing industrial output while adhering to environmental sustainability goals.
 
