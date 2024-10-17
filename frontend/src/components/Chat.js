@@ -1,42 +1,70 @@
-import React, { useState, useEffect } from 'react';
-import { Box, Flex, Input, Button, Text, VStack, HStack, IconButton, Spinner } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { Box, Flex, Input, Text, VStack, HStack, IconButton, Spinner } from '@chakra-ui/react';
 import { FiSend } from 'react-icons/fi';
 
 const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
   const [botTyping, setBotTyping] = useState(false);
+  const [currentBotMessage, setCurrentBotMessage] = useState('');
 
-  const simulatedBotResponse = "Hello! How can I assist you today?";
-
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (input.trim()) {
-      setMessages((prevMessages) => [...prevMessages, { text: input, sender: 'user' }]);
+      const userMessage = { text: input, sender: 'user' };
+      setMessages((prevMessages) => [...prevMessages, userMessage]);
       setInput('');
-      setIsTyping(true);
+      setBotTyping(true);
+      setCurrentBotMessage(''); // Reset current bot message for new response
+
+      try {
+        const response = await fetch('http://localhost:5000/chat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ message: input }),
+        });
+
+        if (response.ok) {
+          const data = await response.json(); // Expecting a single JSON response
+          streamBotResponse(data.content); // Stream the response
+        } else {
+          console.error('Error sending message:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error connecting to backend:', error);
+      }
     }
   };
 
-  useEffect(() => {
-    if (isTyping) {
-      setBotTyping(true);
-      let charIndex = 0;
-      let botResponse = '';
-
-      const typingInterval = setInterval(() => {
-        if (charIndex < simulatedBotResponse.length) {
-          botResponse += simulatedBotResponse[charIndex];
-          charIndex++;
-        } else {
-          setMessages((prevMessages) => [...prevMessages, { text: botResponse, sender: 'bot' }]);
-          setIsTyping(false);
-          setBotTyping(false);
-          clearInterval(typingInterval);
-        }
-      }, 50);
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSendMessage(); // Send message on Enter key press
     }
-  }, [isTyping]);
+  };
+
+  const streamBotResponse = (responseText) => {
+    const chars = responseText.split('');
+    setCurrentBotMessage(''); // Reset current bot message
+    let index = 0;
+
+    const interval = setInterval(() => {
+      if (index < chars.length) {
+        setCurrentBotMessage((prev) => prev + chars[index]); // Add one character at a time
+        index++;
+      } else {
+        clearInterval(interval); // Clear the interval once all characters are displayed
+        setBotTyping(false); // Stop bot typing after the message is fully displayed
+
+        // Add the final bot message to the messages array
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { text: responseText, sender: 'bot' },
+        ]);
+        setCurrentBotMessage(''); // Clear the current message display
+      }
+    }, 30); // Increased speed of character display (reduced to 30ms)
+  };
 
   return (
     <Flex direction="column" h="100%" p={4}>
@@ -77,11 +105,11 @@ const Chat = () => {
             ))
           )}
 
-          {/* Display bot typing */}
-          {botTyping && (
+          {/* Display current bot message */}
+          {currentBotMessage && (
             <HStack justify="flex-start" w="100%">
               <Box bg="#002d30" color="white" px={4} py={3} borderRadius="lg" maxW="75%">
-                <Text>...</Text>
+                <Text>{currentBotMessage}</Text>
               </Box>
               <Spinner size="sm" color="white" />
             </HStack>
@@ -97,6 +125,7 @@ const Chat = () => {
           color="white"
           value={input}
           onChange={(e) => setInput(e.target.value)}
+          onKeyPress={handleKeyPress} // Add key press event
           borderRadius="md"
           _placeholder={{ color: 'gray.400' }}
           _focus={{ borderColor: '#009688' }}
