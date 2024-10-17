@@ -67,10 +67,11 @@ The project is composed of three core components:
 
 ---
 
-## **LLM Setup**
+## **LLM Setup (Just for testing)**
 
 ### **Model Details**:
 OptiBuddy uses the **LLaMA 3.2** language model, fine-tuned on industrial and sustainability datasets to provide actionable insights based on the latest company and industry data. The model is deployed on **Azure OpenAI** infrastructure for scalability and reliability in cloud environments.
+**You dont need to to follow the next steps if you just need to try the project.Running frontend and backend is sufficient.
 
 ### **Steps to Set Up the LLM**:
 
