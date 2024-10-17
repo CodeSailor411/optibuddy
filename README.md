@@ -46,12 +46,12 @@ The project is divided into three main components:
 
 2. **Install Dependencies**:
     ```bash
-    npm install
+    pip install flask
     ```
 
 3. **Start the Backend Server**:
     ```bash
-    npm start
+    run
     ```
 
     The backend will run at `http://localhost:5000`.
