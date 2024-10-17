@@ -43,13 +43,13 @@ const Footer = () => {
                             <h6 className="text-[#013289] text-xl font-bold mb-4">OUR SERVICES</h6>
                             <ul className="text-md">
                                 <li className="mb-2">
-                                    <Link to="/services#web-development" className="text-[#013289] hover:text-gray-900 hover:tracking-wider transition duration-250 ease-in-out">Web Development</Link>
+                                    <Link to="/services#web-development" className="text-[#013289] hover:text-gray-900 hover:tracking-wider transition duration-250 ease-in-out">Business Sustainability Consulting</Link>
                                 </li>
                                 <li className="mb-2">
-                                    <Link to="/services#mobile-app-development" className="text-[#013289] hover:text-gray-900 hover:tracking-wider transition duration-250 ease-in-out">Mobile App Development</Link>
+                                    <Link to="/services#mobile-app-development" className="text-[#013289] hover:text-gray-900 hover:tracking-wider transition duration-250 ease-in-out">Web App Tailoring and Development</Link>
                                 </li>
                                 <li className="mb-2">
-                                    <Link to="/services#domain-hosting" className="text-[#013289] hover:text-gray-900 hover:tracking-wider transition duration-250 ease-in-out">Domain and Hosting</Link>
+                                    <Link to="/services#domain-hosting" className="text-[#013289] hover:text-gray-900 hover:tracking-wider transition duration-250 ease-in-out">Advanced analytics dashboard</Link>
                                 </li>
                                 <li className="mb-2">
                                     <Link to="/services#it-consultation" className="text-[#013289] hover:text-gray-900 hover:tracking-wider transition duration-250 ease-in-out">General IT Consultations</Link>
