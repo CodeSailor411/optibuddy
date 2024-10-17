@@ -70,7 +70,7 @@ The project is composed of three core components:
 5. **Testing API Endpoints**:
     Use Postman, curl, or any HTTP client to test the endpoints, ensuring proper communication with the LLM and data flow. Example:
     ```bash
-    curl -X POST http://localhost:5000/chat -d '{"message": "How can we improve factory sustainability?"}'
+    curl -X POST http://localhost:5000/chat -d '{"message": "How can we improve our company sustainability to fit the latest trends in terms of reducing greenhouse gases?"}'
     ```
 
 ---
