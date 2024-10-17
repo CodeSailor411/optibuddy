@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Box, Flex, Button, VStack, Image, Text } from '@chakra-ui/react';
 import { BiAnalyse, BiBarChart } from 'react-icons/bi';
 import { IoIosStats } from 'react-icons/io';
-import { FiSettings } from 'react-icons/fi';
-import { motion, AnimatePresence } from 'framer-motion'; // Added AnimatePresence
+import { FiSettings, FiHome } from 'react-icons/fi';
+import { motion, AnimatePresence } from 'framer-motion'; // For smooth transitions
 import { ClipLoader } from 'react-spinners';
 import sidebarLogo from '../images/optibuddy-logo-sidebar.png';
 import ReportAnalysis from '../components/ReportAnalysis';
@@ -14,24 +14,16 @@ import Chat from '../components/Chat';
 const Chatbot = () => {
   const [activeSection, setActiveSection] = useState('chat');
   const [loading, setLoading] = useState(true);
-  const [demoLoading, setDemoLoading] = useState(false);
 
   // Simulate initial loading effect for 3 seconds
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
     }, 3000); // 3 seconds
-    return () => clearTimeout(timer); // Cleanup the timer
+    return () => clearTimeout(timer);
   }, []);
 
-  // Simulate a 2-3 second loading when "Demo Our Product" is clicked
-  const handleDemoClick = () => {
-    setDemoLoading(true);
-    setTimeout(() => {
-      setDemoLoading(false);
-    }, 2500); // 2.5 seconds
-  };
-
+  // Render the active section
   const renderSection = () => {
     switch (activeSection) {
       case 'reportAnalysis':
@@ -46,15 +38,15 @@ const Chatbot = () => {
     }
   };
 
-  if (loading || demoLoading) {
+  if (loading) {
     return (
       <AnimatePresence>
         <motion.div
           key="loader"
-          initial={{ opacity: 0 }} // Start with 0 opacity for smooth fade-in
-          animate={{ opacity: 1 }} // Fade in to full opacity
-          exit={{ opacity: 0 }} // Smooth fade-out
-          transition={{ duration: 0.5 }} // Duration of the fade-in/out
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
         >
           <Flex
             w="100vw"
@@ -75,16 +67,16 @@ const Chatbot = () => {
     <AnimatePresence>
       <motion.div
         key="content"
-        initial={{ opacity: 0, y: 20 }} // Start with opacity 0 and slide in from below
-        animate={{ opacity: 1, y: 0 }} // Animate to full opacity and normal position
-        exit={{ opacity: 0, y: -20 }} // Slide out and fade when exiting
-        transition={{ duration: 0.5 }} // Smooth transition effect
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.5 }}
       >
-        <Flex direction="row" w="100vw" h="100vh" bg="gray.900">
+        <Flex direction="row" w="100vw" h="100vh" bg="gray.900" overflow="hidden">
           {/* Sidebar */}
           <Box
             w={{ base: "25%", md: "20%" }}
-            h="100%"
+            h="100vh"  // Ensure full height
             bg="gray.800"
             p={4}
             boxShadow="lg"
@@ -92,6 +84,7 @@ const Chatbot = () => {
             borderColor="gray.700"
             display="flex"
             flexDirection="column"
+            overflowY="auto"  // Ensure no overflow for sidebar content
           >
             {/* Sidebar Header */}
             <Box textAlign="center" mb={6} flexShrink={0}>
@@ -153,18 +146,37 @@ const Chatbot = () => {
               >
                 Chat with Optibuddy
               </Button>
-              {/* Demo Button */}
+
+              {/* New Special Button - Connect to your local network */}
               <Button
+                colorScheme="pink"
+                variant="outline"
+                borderWidth="2px"
+                _hover={{ bg: 'pink.600', color: 'white' }}
+                _active={{ bg: 'pink.700' }}
+                borderRadius="md"
+                borderColor="pink.400"
+                mt={4}
+              >
+                Connect to your local network
+              </Button>
+            </VStack>
+
+            {/* Back to Home Button */}
+            <Box mt="auto">
+              <Button
+                leftIcon={<FiHome />}
                 colorScheme="yellow"
                 variant="solid"
-                onClick={handleDemoClick}
+                onClick={() => window.location.href = '/'} // Link to home page
                 _hover={{ bg: 'yellow.600' }}
                 _active={{ bg: 'yellow.700' }}
                 borderRadius="md"
+                mt={6}
               >
-                Demo Our Product
+                Back to Home
               </Button>
-            </VStack>
+            </Box>
 
             {/* Sidebar Footer */}
             <Box mt="auto" textAlign="center" color="gray.400" fontSize="sm" mb={2}>
@@ -173,7 +185,12 @@ const Chatbot = () => {
           </Box>
 
           {/* Main Section - Dynamic Content */}
-          <Box w={{ base: "75%", md: "80%" }} h="100%" p={4}>
+          <Box
+            w={{ base: "75%", md: "80%" }}
+            h="100vh" // Ensure full height
+            p={4}
+            overflowY="auto"  // Enable scrolling if content overflows
+          >
             {renderSection()}
           </Box>
         </Flex>

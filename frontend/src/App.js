@@ -57,7 +57,7 @@ const App = () => {
   }, []);
 
   // Set the document title
-  useDocTitle("MLD | Molad e Konsult - Bespoke Web and Mobile Applications");
+  useDocTitle("Optibuddy - For a green and sustainable business");
 
   return (
     // Wrap the app in ChakraProvider to apply the custom theme

@@ -13,7 +13,7 @@ const SubscriptionPlans = () => {
                 {/* Basic Plan */}
                 <div className="bg-white shadow-lg rounded-lg p-6 m-4 transition-transform transform hover:scale-105">
                     <h3 className="text-2xl font-bold text-center text-blue-900">Basic</h3>
-                    <p className="text-center text-gray-600 font-semibold mt-2">$19/month</p>
+                    <p className="text-center text-gray-600 font-semibold mt-2">$150/month</p>
                     <ul className="mt-4">
                         <li className="py-2">✔️ Access to Basic Analytics</li>
                         <li className="py-2">✔️ Monthly Reports</li>
@@ -27,7 +27,7 @@ const SubscriptionPlans = () => {
                 {/* Pro Plan */}
                 <div className="bg-white shadow-lg rounded-lg p-6 m-4 transition-transform transform hover:scale-105">
                     <h3 className="text-2xl font-bold text-center text-blue-900">Pro</h3>
-                    <p className="text-center text-gray-600 font-semibold mt-2">$49/month</p>
+                    <p className="text-center text-gray-600 font-semibold mt-2">$250/month</p>
                     <ul className="mt-4">
                         <li className="py-2">✔️ All Basic Features</li>
                         <li className="py-2">✔️ Advanced Analytics</li>
@@ -42,7 +42,7 @@ const SubscriptionPlans = () => {
                 {/* Enterprise Plan */}
                 <div className="bg-white shadow-lg rounded-lg p-6 m-4 transition-transform transform hover:scale-105">
                     <h3 className="text-2xl font-bold text-center text-blue-900">Enterprise</h3>
-                    <p className="text-center text-gray-600 font-semibold mt-2">$99/month</p>
+                    <p className="text-center text-gray-600 font-semibold mt-2">$300/month</p>
                     <ul className="mt-4">
                         <li className="py-2">✔️ All Pro Features</li>
                         <li className="py-2">✔️ Customized Solutions</li>
